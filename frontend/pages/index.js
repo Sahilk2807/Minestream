@@ -5,11 +5,12 @@ import MovieCard from '@/components/MovieCard';
 import HeroCarousel from '@/components/HeroCarousel';
 import DetailModal from '@/components/DetailModal';
 
-// Helper component for section titles with the corrected syntax
+// Helper component for section titles - THE FIX IS HERE
 const SectionTitle = ({ title }) => (
     <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold text-white">{title}</h2>
-        <a href="#" className="text-brand-purple font-semibold text-sm">VIEW ALL ></a>
+        {/* I have changed "VIEW ALL >" to "View All" to fix the error */}
+        <a href="#" className="text-brand-purple font-semibold text-sm">View All</a>
     </div>
 );
 
@@ -80,4 +81,4 @@ export async function getServerSideProps() {
     // Return empty array to prevent the page from crashing if the API is down
     return { props: { allContent: [] } };
   }
-} 
+}
