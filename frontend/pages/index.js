@@ -80,4 +80,4 @@ export async function getServerSideProps() {
     // Return empty array to prevent the page from crashing if the API is down
     return { props: { allContent: [] } };
   }
-}
+} 
