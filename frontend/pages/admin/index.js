@@ -84,27 +84,35 @@ export default function AdminDashboard() {
     <div className="p-4 sm:p-8 bg-deep-dark min-h-screen text-white">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
-        {/* We will create the add page later */}
-        {/* <Link href="/admin/add" className="mb-6 inline-block bg-green-600 text-white py-2 px-4 rounded">
+        
+        {/* THIS LINK IS NOW ACTIVE */}
+        <Link href="/admin/add" className="mb-6 inline-block bg-green-600 text-white py-2 px-5 rounded-lg font-bold hover:bg-green-700 transition-colors">
           Add New Content
-        </Link> */}
+        </Link>
+        
         <p className="text-white/50 mb-6">Here you can view and delete existing content.</p>
         <div className="space-y-4">
           {content.length > 0 ? (
             content.map(item => (
               <div key={item._id} className="bg-light-dark p-4 rounded-lg flex justify-between items-center">
-                <div>
-                  <p className="font-bold">{item.title}</p>
-                  <p className="text-sm text-gray-400">{item.type} - {item.release_year}</p>
+                <div className="flex items-center gap-4">
+                    <img src={item.poster} alt={item.title} className="w-12 h-auto rounded" />
+                    <div>
+                        <p className="font-bold">{item.title}</p>
+                        <p className="text-sm text-gray-400">{item.type.charAt(0).toUpperCase() + item.type.slice(1)} - {item.release_year}</p>
+                    </div>
                 </div>
                 <div>
+                  {/* Edit button can be added later */}
                   {/* <Link href={`/admin/edit/${item._id}`} className="text-blue-400 mr-4">Edit</Link> */}
-                  <button onClick={() => handleDelete(item._id)} className="text-red-500 hover:text-red-400">Delete</button>
+                  <button onClick={() => handleDelete(item._id)} className="text-red-500 hover:text-red-400 font-semibold">Delete</button>
                 </div>
               </div>
             ))
           ) : (
-            <p>No content has been added yet.</p>
+            <div className="bg-light-dark p-6 rounded-lg text-center text-gray-400">
+                <p>No content has been added yet.</p>
+            </div>
           )}
         </div>
       </div>
