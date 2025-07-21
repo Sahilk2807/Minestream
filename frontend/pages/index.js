@@ -5,6 +5,7 @@ import MovieCard from '@/components/MovieCard';
 import HeroCarousel from '@/components/HeroCarousel';
 import DetailModal from '@/components/DetailModal';
 
+// Helper component for section titles with the corrected syntax
 const SectionTitle = ({ title }) => (
     <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold text-white">{title}</h2>
@@ -71,10 +72,12 @@ export default function Home({ allContent }) {
 
 export async function getServerSideProps() {
   try {
+    // Make sure you have set NEXT_PUBLIC_API_BASE_URL in your Vercel environment variables
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/movies`);
     return { props: { allContent: res.data } };
   } catch (error) {
-    console.error("Failed to fetch initial content", error);
+    console.error("Failed to fetch initial content:", error.message);
+    // Return empty array to prevent the page from crashing if the API is down
     return { props: { allContent: [] } };
   }
 }
